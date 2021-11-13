@@ -1,0 +1,16 @@
+.footer-style{
+  
+    color: white;
+    background-color: #093150;
+    margin-bottom: 0px;
+    padding: 8px;
+    margin: 0px;
+  }
+  .footer-img img{
+    margin: 20px;
+    
+    height: 200px;
+    width: 300px;
+    border: 2px solid white;
+    border-radius: 50px;
+  }

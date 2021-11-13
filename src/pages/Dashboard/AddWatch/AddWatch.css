@@ -1,0 +1,16 @@
+.input-tag{
+    background-color: rgba(128, 128, 128, 0.226);
+    padding: 20px;
+    border: 2px solid saddlebrown;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.input-tag input{
+    /* display: inline; */
+    margin: 5px;
+    width: 70%;
+    padding: 6px;
+    border: 1px solid saddlebrown;
+    border-radius: 10px;
+    font-weight: bold;
+}
