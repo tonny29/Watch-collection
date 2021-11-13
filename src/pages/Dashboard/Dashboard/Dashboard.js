@@ -25,13 +25,14 @@ import {
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddWatch from '../AddWatch/AddWatch';
-import AllProduct from '../AllProducts/AllProducts';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import AllOrder from '../AllOrder/AllOrder';
+import MyOrder from '../MyOrder/MyOrder';
 
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 function Dashboard(props) {
   const { window } = props;
@@ -49,12 +50,14 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <Link to="/"><Button color="inherit">Home</Button></Link>
-      <Link to="/explore"><Button color="inherit">Explore Item</Button></Link>
+      <Link to="/"><Button color="inherit">Home</Button></Link><br />
+      <Link to="/explore"><Button color="inherit">Explore Item</Button></Link><br />
       {/* <Link to={`${url}/allProduct`}><Button color="inherit">All Product</Button></Link> */}
-      <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-      <Link to={`${url}/addProduct`}><Button color="inherit">Add Product</Button></Link>
-      <NavLink to={`${url}/ManageProduct`}>Manage All Product</NavLink>
+      <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> <br />
+      <Link to={`${url}/addProduct`}><Button color="inherit">Add Product</Button></Link><br />
+      <NavLink to={`${url}/ManageProduct`}>Manage All Product</NavLink><br />
+      <NavLink to={`${url}/AllOrder`}>Manage All Order</NavLink><br />
+      <NavLink to={`${url}/MyOrder`}>My Order</NavLink><br />
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -143,13 +146,14 @@ function Dashboard(props) {
         <Route path={`${path}/ManageProduct`}>
          <ManageProduct></ManageProduct>
         </Route>
-        {/* <Route path={`${path}/allProduct`}>
-          <AllProduct></AllProduct>
-        </Route> */}
-
-       
         <Route path={`${path}/addProduct`}>
          <AddWatch></AddWatch>
+        </Route>
+        <Route path={`${path}/AllOrder`}>
+         <AllOrder></AllOrder>
+        </Route>
+        <Route path={`${path}/MyOrder`}>
+         <MyOrder></MyOrder>
         </Route>
       </Switch>
       </Box>

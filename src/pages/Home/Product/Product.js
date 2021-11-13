@@ -9,7 +9,7 @@ import './Product.css';
 
 
 const Product = (props) => {
-    const {name,description,price,image}=props.watchAll;
+    const {_id,name,description,price,image}=props.watchAll;
     return (  
         <Card sx={{ display: 'flex',margin:'23px 10px 10px 10px',width:'350px',height:'300px' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -24,7 +24,7 @@ const Product = (props) => {
             {price}
           </Typography>
           <NavLink  className="button-style" to='/dashboard/buyProduct'>
-            <button>Buy Now</button>
+          <NavLink to={`/BuyWatch/${_id}`}>Buy Now</NavLink>
             </NavLink>
         </CardContent>
       </Box>

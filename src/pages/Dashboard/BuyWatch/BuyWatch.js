@@ -9,21 +9,49 @@ import Navigation from '../../Shared/Navigation/Navigation';
 
 const BuyWatch = () => {
     const [selectProduct,setSelectProduct]=useState([]);
+    const [orderData,setOrderData]=useState();
     const {user}=useAuth();
     const id=useParams();
     console.log(id.id);
-    const submitInfo=e=>{
-        e.preventDefault();
-    }
-
+   
     useEffect(()=>{
         fetch('https://dry-taiga-68945.herokuapp.com/getProduct')
         .then(res=>res.json())
         .then(data=>setSelectProduct(data))
     },[])
-console.log(selectProduct);
+// console.log(selectProduct);
 const filterProduct=selectProduct.filter(product=>product._id === id.id)
 // console.log(filterProduct);
+
+    const onBlurhandeler=e=>{
+        const field= e.target.name;
+        const value=e.target.value;
+        const newData={...orderData};
+        newData[field]=value;
+        setOrderData(newData); 
+    }
+
+    const submitInfo=e=>{
+        e.preventDefault();
+        submitHandler()
+    }
+
+    const submitHandler=()=>{
+        const url='http://localhost:7000/allOrder'
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(orderData)
+        })
+        .then(res=>{
+            alert('Order Succecfully Confirmed')
+        });
+        
+ 
+    }
+    console.log(orderData);
 
     return (
         <div>
@@ -35,13 +63,13 @@ const filterProduct=selectProduct.filter(product=>product._id === id.id)
                     <Box style={{marginTop:'40px'}}>
                         <Grid container spacing={2}>
                             <Grid  xs={12} md={6}>
-                            <form onSubmit={submitInfo}>
+                        <form onSubmit={submitInfo}>
                         <TextField 
                         sx={{width:'75%',m:1}}
                         id="standard-basic" label="Your Email"
                         name="email"
                         defaultValue={user.email}
-                        // onChange={onChngeHandeler}
+                        onBlur={onBlurhandeler}
                         variant="standard" />
                         <TextField 
                         sx={{width:'75%',m:1}}
@@ -49,7 +77,7 @@ const filterProduct=selectProduct.filter(product=>product._id === id.id)
                         label="Product name"
                         name="name"
                         defaultValue={myOrder.name}
-                        // onChange={onChngeHandeler}
+                        onBlur={onBlurhandeler}
                         variant="standard" />
                         <TextField
                         sx={{width:'75%',m:1}}
@@ -57,26 +85,26 @@ const filterProduct=selectProduct.filter(product=>product._id === id.id)
                         label="product price"
                         name="Price"
                         defaultValue={myOrder.price}
-                        // onChange={onChngeHandeler}
+                        onBlur={onBlurhandeler}
                         variant="standard"
                         />
                         <TextField
                         sx={{width:'75%',m:1}}
                         id="standard-basic"
                         label="Your Address"
-                        name="your address"
-                        // onChange={onChngeHandeler}
+                        name="address"
+                        onBlur={onBlurhandeler}
                         variant="standard"
                         />
                         <TextField
                         sx={{width:'75%',m:1}}
                         id="standard-basic"
                         label="phone number"
-                        name="your phone number"
-                        // onChange={onChngeHandeler}
+                        name="phone"
+                        onBlur={onBlurhandeler}
                         variant="standard"
                         />
-                        <Button sx={{width:'75%',m:1,backgroundColor:'#093150'}} type="submit" variant="contained">Submit To Add</Button>
+                        <Button onClick={()=>onBlurhandeler} sx={{width:'75%',m:1,backgroundColor:'#093150'}} type="submit" variant="contained">Submit To Add</Button>
                         {/* {isLoading && <CircularProgress/>}
                         {user?.email && <Alert severity="success">User Login Succecfully!!</Alert>}
                         {authError && <Alert severity="error">{authError}</Alert>} */}
