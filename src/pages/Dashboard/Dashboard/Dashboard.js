@@ -25,7 +25,6 @@ import {
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddWatch from '../AddWatch/AddWatch';
-import BuyWatch from '../BuyWatch/BuyWatch';
 import AllProduct from '../AllProducts/AllProducts';
 import ManageProduct from '../ManageProduct/ManageProduct';
 
@@ -151,9 +150,6 @@ function Dashboard(props) {
        
         <Route path={`${path}/addProduct`}>
          <AddWatch></AddWatch>
-        </Route>
-        <Route path={`${path}/buyProduct`}>
-         <BuyWatch></BuyWatch>
         </Route>
       </Switch>
       </Box>

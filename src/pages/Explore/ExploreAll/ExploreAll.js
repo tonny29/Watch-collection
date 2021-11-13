@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 
 
 const ExploreAll = (props) => {
-    const {name,description,price,image}=props.allWatch;
+    const {_id,name,description,price,image}=props.allWatch;
     return (
         <Card sx={{ display: 'flex',margin:'20px 10px 10px 10px',width:'350px',height:'300px' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -24,7 +24,8 @@ const ExploreAll = (props) => {
             {price}
           </Typography>
           <NavLink  className="button-style" to='/dashboard/buyProduct'>
-            <button>Buy Now</button>
+            <NavLink to={`/BuyWatch/${_id}`}>Buy Now</NavLink>
+            {/* BuyWatch/:id */}
             </NavLink>
         </CardContent>
       </Box>
