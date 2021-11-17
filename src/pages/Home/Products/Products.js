@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 const Products = () => {
     const [watch,setWatch]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:7000/getProduct')
+        fetch('https://dry-taiga-68945.herokuapp.com/getProduct')
         .then(res=>res.json())
         .then(data=>setWatch(data))
     },[])

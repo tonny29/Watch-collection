@@ -1,0 +1,17 @@
+.button-color {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    display: block;
+    background-color: cadetblue;
+    padding: 6px;
+    border-radius: 10px;
+    margin: 5px;
+    color: white;
+}
+.button-color:hover{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    
+}

@@ -6,28 +6,23 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Link, NavLink } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import {
   Switch,
   Route,
   useRouteMatch
 } from "react-router-dom";
-import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddWatch from '../AddWatch/AddWatch';
 import ManageProduct from '../ManageProduct/ManageProduct';
 import AllOrder from '../AllOrder/AllOrder';
 import MyOrder from '../MyOrder/MyOrder';
+import useAuth from '../../hooks/useAuth';
+import DashHome from '../DashHome/DashHome';
+import './Dashboard.css';
 
 
 
@@ -35,6 +30,7 @@ import MyOrder from '../MyOrder/MyOrder';
 const drawerWidth = 200;
 
 function Dashboard(props) {
+  const {admin}=useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -50,37 +46,29 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <Link to="/"><Button color="inherit">Home</Button></Link><br />
-      <Link to="/explore"><Button color="inherit">Explore Item</Button></Link><br />
-      {/* <Link to={`${url}/allProduct`}><Button color="inherit">All Product</Button></Link> */}
-      <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> <br />
-      <Link to={`${url}/addProduct`}><Button color="inherit">Add Product</Button></Link><br />
-      <NavLink to={`${url}/ManageProduct`}>Manage All Product</NavLink><br />
-      <NavLink to={`${url}/AllOrder`}>Manage All Order</NavLink><br />
-      <NavLink to={`${url}/MyOrder`}>My Order</NavLink><br />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <NavLink to="/"  className='button-color'>Home</NavLink><br />
+      <NavLink to="/explore" className='button-color'>Explore Item</NavLink><br />
+      <NavLink to={`${url}/MyOrder`} className='button-color'>My Order</NavLink><br />
+
+     {admin && <Box>
+        <NavLink to={`${url}/makeAdmin`} className='button-color'>Make Admin</NavLink> <br />
+        <NavLink to={`${url}/addProduct`} className='button-color'>Add Product</NavLink><br />
+        <NavLink to={`${url}/ManageProduct`} className='button-color'>Manage All Product</NavLink><br />
+        <NavLink to={`${url}/AllOrder`} className='button-color'>Manage All Order</NavLink><br />
+      </Box>}
     </div>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-      <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },backgroundColor:'#093150'
+          ml: { sm: `${drawerWidth}px` }, backgroundColor: '#093150'
         }}
       >
         <Toolbar>
@@ -135,27 +123,27 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        
+
         <Switch>
-        <Route exact path={path}>
-         <AddWatch></AddWatch>
-        </Route>
-        <Route path={`${path}/makeAdmin`}>
-          <MakeAdmin></MakeAdmin>
-        </Route>
-        <Route path={`${path}/ManageProduct`}>
-         <ManageProduct></ManageProduct>
-        </Route>
-        <Route path={`${path}/addProduct`}>
-         <AddWatch></AddWatch>
-        </Route>
-        <Route path={`${path}/AllOrder`}>
-         <AllOrder></AllOrder>
-        </Route>
-        <Route path={`${path}/MyOrder`}>
-         <MyOrder></MyOrder>
-        </Route>
-      </Switch>
+          <Route exact path={path}>
+           <DashHome></DashHome>
+          </Route>
+          <Route path={`${path}/makeAdmin`}>
+            <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path={`${path}/ManageProduct`}>
+            <ManageProduct></ManageProduct>
+          </Route>
+          <Route path={`${path}/addProduct`}>
+            <AddWatch></AddWatch>
+          </Route>
+          <Route path={`${path}/AllOrder`}>
+            <AllOrder></AllOrder>
+          </Route>
+          <Route path={`${path}/MyOrder`}>
+            <MyOrder></MyOrder>
+          </Route>
+        </Switch>
       </Box>
     </Box>
   );

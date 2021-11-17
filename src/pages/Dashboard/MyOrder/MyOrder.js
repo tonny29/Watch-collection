@@ -39,7 +39,7 @@ const MyOrder = () => {
 
     return (
         <div>
-            <h1>All Order</h1>
+            <h1>MY Order</h1>
             {
                 myOderData.map(allOrder => <div
                     key={allOrder._id}
@@ -60,7 +60,7 @@ const MyOrder = () => {
                         </Grid>
                         <Grid xs={12} md={4} lg={4}>
                             <Box sx={{ m: 2 }}>
-                                <Button onClick={() => deleteOrderhandler(allOrder._id)} sx={{ width: '70%' }}>Cancel Order</Button>
+                                <Button onClick={() => deleteOrderhandler(allOrder._id)} sx={{ width: '70%'}}className="button-degine">Cancel Order</Button>
                             </Box>
                         </Grid>
 

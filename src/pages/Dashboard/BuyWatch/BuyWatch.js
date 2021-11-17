@@ -37,7 +37,7 @@ const filterProduct=selectProduct.filter(product=>product._id === id.id)
     }
 
     const submitHandler=()=>{
-        const url='http://localhost:7000/allOrder'
+        const url='https://dry-taiga-68945.herokuapp.com/allOrder'
         fetch(url,{
             method:'POST',
             headers:{

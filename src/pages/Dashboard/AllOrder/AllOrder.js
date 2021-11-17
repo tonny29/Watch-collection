@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Button from '@restart/ui/esm/Button';
 import React, { useEffect, useState } from 'react';
+
 import './AllOrder.css';
 
 
@@ -57,7 +58,7 @@ const AllOrder = () => {
                         </Grid>
                         <Grid xs={12} md={4} lg={4}>
                             <Box sx={{ m: 2 }}>
-                                <Button onClick={() => deleteOrderhandler(allOrder._id)} sx={{ width: '70%' }} className="order-btn">Cancel Order</Button>
+                                <Button onClick={() => deleteOrderhandler(allOrder._id)} sx={{ width: '70%' }} className="button-degine">Cancel Order</Button>
                             </Box>
                         </Grid>
 

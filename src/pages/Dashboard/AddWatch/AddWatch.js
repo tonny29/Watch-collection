@@ -1,4 +1,4 @@
-import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
@@ -17,7 +17,7 @@ const Addwatch = () => {
         const price = data.price;
         const image = data.image
 
-        fetch('http://localhost:7000/addProduct', {
+        fetch('https://dry-taiga-68945.herokuapp.com/addProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -25,14 +25,16 @@ const Addwatch = () => {
             body: JSON.stringify({ name, description, price, image })
         })
             .then(res => res.json())
-            .then(data => { console.log(data) ; e.target.reset() })
+            .then(data => { 
+                alert('product added succecfully....')
+                console.log(data) ; e.target.reset() })
     }
     return (
         <div>
             <Container>
                 <Grid container spacing={2}>
                     <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                        <Typography variant="body1" gutterBottom>Add Watch</Typography>
+                        <Typography variant="body1" gutterBottom>Add A Watch</Typography>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="input-tag">

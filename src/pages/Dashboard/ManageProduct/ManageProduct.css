@@ -1,0 +1,11 @@
+.alingment{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.alingment button:hover{
+    background-color: rgb(231, 19, 72);
+}
