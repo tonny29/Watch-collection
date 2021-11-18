@@ -24,7 +24,8 @@ const Product = (props) => {
             {price}
           </Typography>
           <NavLink  className="button-style" to='/dashboard/buyProduct'>
-          <NavLink to={`/BuyWatch/${_id}`}>Buy Now</NavLink>
+          <NavLink to={`/BuyWatch/${_id}`}
+          ><button  style={{textDecoration:'none'}}>Buy Now</button></NavLink>
             </NavLink>
         </CardContent>
       </Box>

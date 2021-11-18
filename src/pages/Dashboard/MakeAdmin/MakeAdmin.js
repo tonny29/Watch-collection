@@ -33,8 +33,8 @@ const MakeAdmin = () => {
              <form onSubmit={handleSubmit(onSubmit)}>
 
             <Box className="input-field">  
-            <input className="reg-filed" {...register("email")} placeholder="new admin email" type='email' required/>   
-            <input className="reg-btn" type="submit" value="add admin" />
+            <input style={{width:'50%'}} {...register("email")} placeholder="new admin email" type='email' required/> <br /><br />  
+            <input style={{width:'50%',backgroundColor:'#093150',color:'white'}} type="submit" value="add admin" />
             </Box>
             </form>
         </div>

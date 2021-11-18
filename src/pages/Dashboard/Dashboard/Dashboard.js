@@ -23,6 +23,7 @@ import MyOrder from '../MyOrder/MyOrder';
 import useAuth from '../../hooks/useAuth';
 import DashHome from '../DashHome/DashHome';
 import './Dashboard.css';
+import CustomerReview from './CustomerReview/CustomerReview';
 
 
 
@@ -30,7 +31,7 @@ import './Dashboard.css';
 const drawerWidth = 200;
 
 function Dashboard(props) {
-  const {admin}=useAuth();
+  const {admin,logOut}=useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -56,6 +57,9 @@ function Dashboard(props) {
         <NavLink to={`${url}/ManageProduct`} className='button-color'>Manage All Product</NavLink><br />
         <NavLink to={`${url}/AllOrder`} className='button-color'>Manage All Order</NavLink><br />
       </Box>}
+      <NavLink to={`${url}/review`} className='button-color'>Reviews</NavLink><br />
+      <button onClick={logOut} style={{backgroundColor:'#a00',color:'#fff',padding:'5px',border:'0px',borderRadius:'5px'}}>Logout</button>
+
     </div>
   );
 
@@ -142,6 +146,9 @@ function Dashboard(props) {
           </Route>
           <Route path={`${path}/MyOrder`}>
             <MyOrder></MyOrder>
+          </Route>
+          <Route path={`${path}/review`}>
+            <CustomerReview></CustomerReview>
           </Route>
         </Switch>
       </Box>

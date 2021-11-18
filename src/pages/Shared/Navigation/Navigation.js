@@ -12,54 +12,47 @@ import useAuth from '../../hooks/useAuth';
 
 
 const Navigation = () => {
-  const {user,logOut}=useAuth();
-    return (
-        <Box sx={{ flexGrow: 1}}>
-      <AppBar position="static" style={{backgroundColor:'#093150'}}>
+  const { user, logOut } = useAuth();
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" style={{ backgroundColor: '#093150' }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-          <MenuIcon />
-          </IconButton>
           <Grid container spacing={2}>
             <Grid item xs={12} md={3}>
-            <Typography variant="h6" component="div" >
-           WATCH WORLD
-           </Typography>
+              <Typography variant="h6" component="div" >
+                WATCH WORLD
+              </Typography>
             </Grid>
             <Grid item xs={12} md={9}>
-            <NavLink style={{textDecorationLine:'none',color:'white'}} to='/home'>
-                <Button color="inherit">Home</Button>
-             </NavLink>
-             <NavLink style={{textDecorationLine:'none',color:'white'}} to='/explore'>
-                 <Button color="inherit">Explore</Button>
-             </NavLink>
-             
-            {user?.email? 
-              <Box>
-                <NavLink style={{textDecorationLine:'none',color:'white'}} to='/dashboard'>
-                <Button color="inherit">Dasboard</Button>
+              <div style={{display:'flex'}}>
+                <NavLink style={{ textDecorationLine: 'none', color: 'white' }} to='/home'>
+                  <Button color="inherit">Home</Button>
                 </NavLink>
-                <Button onClick={logOut} color="inherit">Log Out</Button>
-              </Box>
-              :
-              <NavLink style={{textDecorationLine:'none',color:'white'}} to='/login'>
-              <Button color="inherit">Login</Button>
-              </NavLink>  
-            }
+                <NavLink style={{ textDecorationLine: 'none', color: 'white' }} to='/explore'>
+                  <Button color="inherit">Explore</Button>
+                </NavLink>
+
+                {user?.email ?
+                  <Box style={{display:'flex'}}>
+                    <NavLink style={{ textDecorationLine: 'none', color: 'white' }} to='/dashboard'>
+                      <Button color="inherit">Dasboard</Button>
+                    </NavLink>
+                    <Button onClick={logOut} color="inherit">LogOut</Button>
+                  </Box>
+                  :
+                  <NavLink style={{ textDecorationLine: 'none', color: 'white' }} to='/login'>
+                    <Button color="inherit">Login</Button>
+                  </NavLink>
+                }
+              </div>
             </Grid>
-  
+
           </Grid>
-          
+
         </Toolbar>
       </AppBar>
     </Box>
-    );
+  );
 };
 
 export default Navigation;

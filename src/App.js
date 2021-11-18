@@ -21,9 +21,9 @@ function App() {
             <Route exact path='/'>
               <Home></Home>
             </Route>
-            <Route path='/BuyWatch/:id'>
+            <PrivateRoute path='/BuyWatch/:id'>
               <BuyWatch></BuyWatch>
-            </Route>
+            </PrivateRoute>
             <Route path='/home'>
               <Home></Home>
             </Route>

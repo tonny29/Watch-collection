@@ -81,12 +81,16 @@ const useFirebase = () => {
     },[auth])
 
     const logOut=()=>{
+      const yes=window.confirm('Are you sure you want to logout?');
+      if(yes){
         signOut(auth).then(()=>{
 
         }).catch((error)=>{
 
         })
         .finally(()=>setIsLoading(false));
+      }
+       
     }
 
     const saveUser=(email,displayName,method)=>{

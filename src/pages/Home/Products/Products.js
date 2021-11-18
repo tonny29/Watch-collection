@@ -27,7 +27,7 @@ console.log(watch)
               ></Product>)
           }
       </Grid>
-      <NavLink to='/explore'><h3>See More...</h3></NavLink>
+      <NavLink to='/explore'><button style={{borderRadius:'5px',backgroundColor:'#007',color:'#fff'}}><h4>See More</h4></button></NavLink>
       </Container>
     </Box>
     );

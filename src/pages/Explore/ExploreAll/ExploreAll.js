@@ -24,7 +24,7 @@ const ExploreAll = (props) => {
             {price}
           </Typography>
           <NavLink  className="button-style" to='/dashboard/buyProduct'>
-            <NavLink to={`/BuyWatch/${_id}`}>Buy Now</NavLink>
+            <NavLink to={`/BuyWatch/${_id}`}><button className="button-style">Buy Now</button></NavLink>
             {/* BuyWatch/:id */}
             </NavLink>
         </CardContent>

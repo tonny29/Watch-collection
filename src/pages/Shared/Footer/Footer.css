@@ -8,7 +8,7 @@
   }
   .footer-img img{
     margin: 20px;
-    
+    /* width: 100%; */
     height: 200px;
     width: 300px;
     border: 2px solid white;
