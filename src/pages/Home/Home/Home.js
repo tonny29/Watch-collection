@@ -5,7 +5,7 @@ import NewWatch from '../NewWatch/NewWatch';
 import Products from '../Products/Products';
 import Reviewers from '../Reviewers/Reviewers';
 import TopBanner from '../TopBanner/TopBanner';
-
+//home component
 const Home = () => {
     return (
         <div style={{backgroundColor:"#aad4f556"}}>
